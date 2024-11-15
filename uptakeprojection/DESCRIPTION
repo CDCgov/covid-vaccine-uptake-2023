@@ -1,0 +1,34 @@
+Package: uptakeprojection
+Title: COVID-19 booster uptake projections
+Version: 1.0.0.9000
+Authors@R: c(
+    person("Scott", "Olesen", , "ulp7@cdc.gov", role = c("aut", "cre")),
+    person("Inga", "Holmdahl", , "usn4@cdc.gov", role = "aut"))
+Description: Given vaccine uptake data from the National Immunization Survey
+    from the fall and early winter, make scenario-based projections about the
+    uptake during winter and through the end of the season.
+License: Apache License (>= 2)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+Imports:
+    boot,
+    cowplot,
+    dplyr,
+    ggplot2,
+    lubridate,
+    purrr,
+    rappdirs,
+    readr,
+    rstan,
+    RSocrata,
+    stringr,
+    tidyr,
+    zoo
+Depends:
+    R (>= 2.10)
+LazyData: true
+Suggests:
+    testthat (>= 3.0.0),
+    yaml
+Config/testthat/edition: 3
