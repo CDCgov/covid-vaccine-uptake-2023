@@ -19,12 +19,15 @@
 #' @export
 #'
 #' @examples
-#' get_socrata(
-#'   "https://healthdata.gov/resource/g62h-syeh.json",
-#'   where = "state=AL",
-#'   select = c("date", "state", "previous_day_admission_adult_covid_confirmed"),
-#'   limit = 10
-#' )
+#' # do not run by default, because of throttling limits
+#' if (FALSE) {
+#'   get_socrata(
+#'     "https://healthdata.gov/resource/g62h-syeh.json",
+#'     where = "state=AL",
+#'     select = c("date", "state", "previous_day_admission_adult_covid_confirmed"),
+#'     limit = 10
+#'   )
+#' }
 get_socrata <- function(
     json_url,
     where = NULL,

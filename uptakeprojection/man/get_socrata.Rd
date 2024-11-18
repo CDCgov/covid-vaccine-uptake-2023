@@ -33,10 +33,13 @@ URL. For example, \code{select = c("name", "age")} creates a clause
 passed through \code{read.socrata()}.
 }
 \examples{
-get_socrata(
-  "https://healthdata.gov/resource/g62h-syeh.json",
-  where = "state=AL",
-  select = c("date", "state", "previous_day_admission_adult_covid_confirmed"),
-  limit = 10
-)
+# do not run by default, because of throttling limits
+if (FALSE) {
+  get_socrata(
+    "https://healthdata.gov/resource/g62h-syeh.json",
+    where = "state=AL",
+    select = c("date", "state", "previous_day_admission_adult_covid_confirmed"),
+    limit = 10
+  )
+}
 }
