@@ -18,14 +18,14 @@ get_nis_2022 <- function(indicator = "booster") {
       # note trailing space vv
       "Completed primary series "
     ) %>%
-      str_c("'", ., "'", collapse = ", ")
+      quote_collapse()
   } else if (indicator == "sentiment") {
     indicator_names <- c(
       "Bivalent Booster Uptake and Intention",
       # note trailing space vv
       "Completed primary series "
     ) %>%
-      str_c("'", ., "'", collapse = ", ")
+      quote_collapse()
   }
 
   raw <- get_socrata(
@@ -195,4 +195,12 @@ get_nis_2022 <- function(indicator = "booster") {
       group_name = ifelse(group_name == "Poverty status", "Poverty Status", group_name),
       group_name = ifelse(group_name == "All adults 18+", "Overall", group_name)
     )
+}
+
+#' Collapse a vector of strings with single quotes and commands
+#' 
+#' @param x vector of strings
+#' @return string
+quote_collapse <- function(x) {
+  str_c("'", x, "'", collapse = ", ")
 }
