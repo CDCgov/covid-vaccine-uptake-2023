@@ -22,13 +22,11 @@ stan_slope <- function(
     ...) {
   rstan::stan(
     system.file("stan", "slope.stan", package = "uptakeprojection", mustWork = TRUE),
-    data = df %>%
-      as.list() %>%
-      c(
-        N = length(.$x),
-        prior_intercept_sd = prior_intercept_sd,
-        prior_slope_sd = prior_slope_sd
-      ),
+    data = c(
+      N = nrow(df),
+      prior_intercept_sd = df$prior_intercept_sd,
+      prior_slope_sd = df$prior_slope_sd
+    ),
     chains = chains,
     iter = iter,
     ...
