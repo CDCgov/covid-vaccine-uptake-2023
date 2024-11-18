@@ -198,7 +198,7 @@ get_nis_2022 <- function(indicator = "booster") {
 }
 
 #' Collapse a vector of strings with single quotes and commands
-#' 
+#'
 #' @param x vector of strings
 #' @return string
 quote_collapse <- function(x) {
