@@ -1,9 +1,9 @@
 #' Linear regression: fit y = mx + b line to x,y pairs to estimate the uptake slope
 #'
-#' Model: y[i] ~ Normal(slope * x[i] + intercept, sd)
+#' Model: y_i ~ Normal(slope * x_i + intercept, sd)
 #'        intercept ~ Normal(0, prior_intercept_sd)
 #'        slope ~ normal(0, prior_slope_sd)
-#'        sd[i] := a priori estimate of standard deviation (provided by NIS)
+#'        sd_i := a priori estimate of standard deviation (provided by NIS)
 #' @param df data frame including x (week) and y (estimate) as well as sd for each data point
 #' @param chains integer number of chains for rstan to run
 #' @param iter integer chain length for rstan
@@ -48,6 +48,7 @@ extract1 <- function(x, nm) {
 #' Summarize stan slopes
 #'
 #' @param df data frame including x (week) and y (estimate) as well as sd for each data point
+#' @param name name of the column to extract. Default: `"slope"`
 #' @param ... further arguments passed to `stan_slope()`
 #' @return named vector with estimate, lci, uci
 #'

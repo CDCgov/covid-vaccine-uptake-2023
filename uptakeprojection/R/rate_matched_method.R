@@ -24,7 +24,7 @@ rate_matched_method <- function(obs_uptake, ref_uptake, obs_slope,
     pessimistic_rate <- obs_slope
   } else {
     obs_rate <- diff(c(0, obs_uptake))
-    pessimistic_rate <- mean(tail(obs_rate, n_observations - 1))
+    pessimistic_rate <- mean(utils::tail(obs_rate, n_observations - 1))
   }
 
   # find the date that the ref rate is closest to obs_slope
@@ -35,7 +35,7 @@ rate_matched_method <- function(obs_uptake, ref_uptake, obs_slope,
 
   c(obs_rate, ref_rate[(closest_idx + 1):length(ref_rate)]) %>%
     # should be no longer than reference uptake
-    head(length(ref_uptake)) %>%
+    utils::head(length(ref_uptake)) %>%
     # if shorter, pad with zeros
     pad(length(ref_uptake), 0) %>%
     cumsum()

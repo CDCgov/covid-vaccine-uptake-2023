@@ -30,8 +30,8 @@ stan_slope(
 MCMC samples as rstan::stanfit object
 }
 \description{
-Model: y\link{i} ~ Normal(slope * x\link{i} + intercept, sd)
+Model: y_i ~ Normal(slope * x_i + intercept, sd)
 intercept ~ Normal(0, prior_intercept_sd)
 slope ~ normal(0, prior_slope_sd)
-sd\link{i} := a priori estimate of standard deviation (provided by NIS)
+sd_i := a priori estimate of standard deviation (provided by NIS)
 }

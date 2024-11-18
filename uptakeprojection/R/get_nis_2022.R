@@ -167,11 +167,12 @@ get_nis_2022 <- function(indicator = "booster") {
     )) %>%
     mutate(
       group_category = case_when(
-        group_category == "18 – 29 years" ~ "18-29 years",
-        group_category == "30 – 39 years" ~ "30-39 years",
-        group_category == "40 – 49 years" ~ "40-49 years",
-        group_category == "50 – 64 years" ~ "50-64 years",
-        group_category == "65 – 74 years" ~ "65-74 years",
+        # note that U+2013 is en dash
+        group_category == "18 \u2013 29 years" ~ "18-29 years",
+        group_category == "30 \u2013 39 years" ~ "30-39 years",
+        group_category == "40 \u2013 49 years" ~ "40-49 years",
+        group_category == "50 \u2013 64 years" ~ "50-64 years",
+        group_category == "65 \u2013 74 years" ~ "65-74 years",
         group_category == "American Indian/Alaska Native, non-Hispanic" ~
           "American Indian/Alaska Native, Non-Hispanic",
         group_category == "Asian, non-Hispanic" ~ "Asian, Non-Hispanic",

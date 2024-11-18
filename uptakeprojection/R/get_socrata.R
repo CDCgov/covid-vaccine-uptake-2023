@@ -56,7 +56,7 @@ get_socrata <- function(
   }
 
   url %>%
-    URLencode() %>%
+    utils::URLencode() %>%
     RSocrata::read.socrata(...) %>%
     as_tibble()
 }
