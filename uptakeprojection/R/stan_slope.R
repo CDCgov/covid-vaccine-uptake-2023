@@ -58,8 +58,8 @@ stan_slope_summary <- function(df, name = "slope", ...) {
     extract1(name)
 
   c(
-    estimate = median(draws),
-    lci = unname(quantile(draws, 0.05 / 2)),
-    uci = unname(quantile(draws, 1 - 0.05 / 2))
+    estimate = stats::median(draws),
+    lci = unname(stats::quantile(draws, 0.05 / 2)),
+    uci = unname(stats::quantile(draws, 1 - 0.05 / 2))
   )
 }

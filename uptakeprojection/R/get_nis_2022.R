@@ -162,12 +162,12 @@ get_nis_2022 <- function(indicator = "booster") {
 
   saved <- data %>%
     arrange(date) %>%
+    # note that U+2013 is en dash
     filter(!group_category %in% c(
-      "18 – 49 years", "60+ years", "65+ years"
+      "18 \u2013 49 years", "60+ years", "65+ years"
     )) %>%
     mutate(
       group_category = case_when(
-        # note that U+2013 is en dash
         group_category == "18 \u2013 29 years" ~ "18-29 years",
         group_category == "30 \u2013 39 years" ~ "30-39 years",
         group_category == "40 \u2013 49 years" ~ "40-49 years",
