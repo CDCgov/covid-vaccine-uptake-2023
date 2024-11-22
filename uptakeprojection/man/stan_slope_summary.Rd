@@ -9,6 +9,8 @@ stan_slope_summary(df, name = "slope", ...)
 \arguments{
 \item{df}{data frame including x (week) and y (estimate) as well as sd for each data point}
 
+\item{name}{name of the column to extract. Default: \code{"slope"}}
+
 \item{...}{further arguments passed to \code{stan_slope()}}
 }
 \value{

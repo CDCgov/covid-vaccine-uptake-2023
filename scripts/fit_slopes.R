@@ -16,7 +16,7 @@ nis2022_dropped <- nis2022 %>%
   # drop that point or not
   (function(df) {
     if (drop_first_2022_point) {
-      tail(df, -1)
+      utils::tail(df, -1)
     } else {
       df
     }

@@ -14,6 +14,8 @@ bootstrap_slope(data, n = 1000, conf = 0.95, type = "bca", min_n_rows = 3)
 \item{conf}{confidence level for bootstrap quantities (1 - alpha)}
 
 \item{type}{passed to boot::boot.ci, type of bootstrap used (e.g. percentile, studentized, etc.)}
+
+\item{min_n_rows}{If there are fewer than this number of rows, return \code{NULL}. Default: 3.}
 }
 \value{
 named vector; slope estimate with upper and lower 95\% confidence intervals

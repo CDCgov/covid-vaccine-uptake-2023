@@ -17,8 +17,8 @@ get_ref_uptake <- function(
   # for the spline function, let historical_ref_date be the "zero" point
   spline22 <- nis2022 %>%
     mutate(x = (date - historical_ref_date) / ddays(7)) %>%
-    with(smooth.spline(x, make_nondecreasing(estimate)))
+    with(stats::smooth.spline(x, make_nondecreasing(estimate)))
 
   x <- (lubridate::as_date(date) - ref_date) / ddays(7)
-  predict(spline22, x)$y
+  stats::predict(spline22, x)$y
 }

@@ -18,14 +18,14 @@ get_nis_2022 <- function(indicator = "booster") {
       # note trailing space vv
       "Completed primary series "
     ) %>%
-      str_c("'", ., "'", collapse = ", ")
+      quote_collapse()
   } else if (indicator == "sentiment") {
     indicator_names <- c(
       "Bivalent Booster Uptake and Intention",
       # note trailing space vv
       "Completed primary series "
     ) %>%
-      str_c("'", ., "'", collapse = ", ")
+      quote_collapse()
   }
 
   raw <- get_socrata(
@@ -162,16 +162,17 @@ get_nis_2022 <- function(indicator = "booster") {
 
   saved <- data %>%
     arrange(date) %>%
+    # note that U+2013 is en dash
     filter(!group_category %in% c(
-      "18 – 49 years", "60+ years", "65+ years"
+      "18 \u2013 49 years", "60+ years", "65+ years"
     )) %>%
     mutate(
       group_category = case_when(
-        group_category == "18 – 29 years" ~ "18-29 years",
-        group_category == "30 – 39 years" ~ "30-39 years",
-        group_category == "40 – 49 years" ~ "40-49 years",
-        group_category == "50 – 64 years" ~ "50-64 years",
-        group_category == "65 – 74 years" ~ "65-74 years",
+        group_category == "18 \u2013 29 years" ~ "18-29 years",
+        group_category == "30 \u2013 39 years" ~ "30-39 years",
+        group_category == "40 \u2013 49 years" ~ "40-49 years",
+        group_category == "50 \u2013 64 years" ~ "50-64 years",
+        group_category == "65 \u2013 74 years" ~ "65-74 years",
         group_category == "American Indian/Alaska Native, non-Hispanic" ~
           "American Indian/Alaska Native, Non-Hispanic",
         group_category == "Asian, non-Hispanic" ~ "Asian, Non-Hispanic",
@@ -194,4 +195,12 @@ get_nis_2022 <- function(indicator = "booster") {
       group_name = ifelse(group_name == "Poverty status", "Poverty Status", group_name),
       group_name = ifelse(group_name == "All adults 18+", "Overall", group_name)
     )
+}
+
+#' Collapse a vector of strings with single quotes and commands
+#'
+#' @param x vector of strings
+#' @return string
+quote_collapse <- function(x) {
+  str_c("'", x, "'", collapse = ", ")
 }

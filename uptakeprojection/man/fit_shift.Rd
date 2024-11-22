@@ -7,7 +7,9 @@
 fit_shift(nis2022, nis2023)
 }
 \arguments{
-\item{nis2022}{tibble containing nis2023 data}
+\item{nis2022}{tibble containing nis2022 data}
+
+\item{nis2023}{tibble containing nis2023 data}
 }
 \value{
 shift (in days) which best aligns the two time series
