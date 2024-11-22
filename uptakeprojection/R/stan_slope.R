@@ -9,7 +9,7 @@
 #' @param iter integer chain length for rstan
 #' @param prior_intercept_sd double (must be positive) see model above
 #' @param prior_slope_sd double (must be positive) see model above
-#' @param ... further arguments to spass to `rstan::stan`
+#' @param ... further arguments to pass to `rstan::stan`
 #'
 #' @return MCMC samples as rstan::stanfit object
 #' @export
@@ -20,13 +20,17 @@ stan_slope <- function(
     prior_intercept_sd = 10,
     prior_slope_sd = 10,
     ...) {
+
+  stan_data <- c(
+    as.list(df),
+    N = nrow(df),
+    prior_intercept_sd = prior_intercept_sd,
+    prior_slope_sd = prior_slope_sd
+  )
+
   rstan::stan(
     system.file("stan", "slope.stan", package = "uptakeprojection", mustWork = TRUE),
-    data = list(
-      N = nrow(df),
-      prior_intercept_sd = df$prior_intercept_sd,
-      prior_slope_sd = df$prior_slope_sd
-    ),
+    data = stan_data,
     chains = chains,
     iter = iter,
     ...
