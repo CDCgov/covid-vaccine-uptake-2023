@@ -20,7 +20,6 @@ stan_slope <- function(
     prior_intercept_sd = 10,
     prior_slope_sd = 10,
     ...) {
-
   stan_data <- c(
     as.list(df),
     N = nrow(df),
