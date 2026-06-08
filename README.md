@@ -1,7 +1,7 @@
 > [!CAUTION]
 > - This repository has been archived and is no longer maintained.
 > - The code is provided for historical reference and may contain unpatched or unknown vulnerabilities.
-> - It should not be used in production systems.\n\n# cfa-covid-booster-uptake-projection
+> - It should not be used in production systems.
 
 In-season projections of COVID-19 vaccine uptake for the 2023/2024 season.
 
